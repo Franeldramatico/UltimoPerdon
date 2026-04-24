@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-float-fast: float 5s ease-in-out infinite;
+  --animate-pulse-pink: pulse-pink 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-heartbeat: heartbeat 1.5s ease-in-out infinite;
+  --animate-wiggle: wiggle 2s ease-in-out infinite;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #0d0612;
+  color: #fdf4ff;
+  overflow: hidden; /* Evita que la pantalla se mueva por las partículas */
+}
+
+.font-cute {
+  font-family: 'Nunito', sans-serif;
+}
+
+.font-cursive {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(4deg); }
+  66% { transform: translateY(8px) rotate(-4deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes pulse-pink {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.5)); }
+  50% { opacity: 0.8; filter: drop-shadow(0 0 25px rgba(236, 72, 153, 0.8)); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.1); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+}
+
+/* Patrón Gótico Lindo de Fondo */
+.bg-cute-goth {
+  background-image: 
+    radial-gradient(circle at center, #2b1129 2px, transparent 2px);
+  background-size: 32px 32px;
+}
+
+/* Diseño Glassmorphism oscuro lindo */
+.card-container {
+  background: linear-gradient(135deg, rgba(26, 16, 37, 0.95) 0%, rgba(13, 6, 18, 0.98) 100%);
+  box-shadow: 0 0 40px rgba(217, 70, 239, 0.15), 
+              inset 0 0 20px rgba(217, 70, 239, 0.1);
+  border: 1px solid rgba(217, 70, 239, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+}
+
+/* Animación de las partículas */
+@keyframes particle-burst {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--rot)); opacity: 0; }
+}
+
+.particle {
+  animation: particle-burst 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+}
